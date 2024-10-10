@@ -26,5 +26,32 @@
     </div>
     
     <script src="script.js"></script>
+    <div id="consent-banner" style="display: none;">
+  <p>We use cookies to improve your experience. By using our site, you consent to our use of cookies.</p>
+  <button id="accept">Accept All</button>
+  <button id="reject">Reject All</button>
+  <button id="customize">Customize</button>
+</div>
+
+<script>
+  window.onload = function() {
+    if (!localStorage.getItem('cookieConsent')) {
+      document.getElementById('consent-banner').style.display = 'block';
+    }
+  };
+
+  document.getElementById('accept').onclick = function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('consent-banner').style.display = 'none';
+  };
+
+  document.getElementById('reject').onclick = function() {
+    localStorage.setItem('cookieConsent', 'rejected');
+    document.getElementById('consent-banner').style.display = 'none';
+  };
+
+  // Add customization functionality as needed
+</script>
+
 </body>
 </html>
