@@ -58,7 +58,27 @@
         <button id="button2">Generate Random Number</button>
         <p id="message"></p>
     </div>
+    <div id="consent-banner" class="consent-banner">
+      <p>This website uses cookies to ensure you get the best experience on our website. 
+        <a href="/privacy-policy" target="_blank">Learn more</a>
+      </p>
+      <button id="accept-btn">Accept</button>
+    </div>
     
     <script src="script.js"></script>
+    <script>
+      // Check if consent was already given
+      window.onload = function() {
+        if (!localStorage.getItem("cookieConsent")) {
+          document.getElementById("consent-banner").style.display = "block";
+        }
+      }
+  
+      // Handle consent acceptance
+      document.getElementById("accept-btn").addEventListener("click", function() {
+        localStorage.setItem("cookieConsent", "true");
+        document.getElementById("consent-banner").style.display = "none";
+      });
+    </script>
 </body>
 </html>
